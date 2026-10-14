@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoResort La Porcada - El Mar a Lago del Siglo XXI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #0c0c0d;
+            --color-surface: #16161a;
+            --color-surface-light: #1f1f24;
+            --color-primary: #d4b483;
+            --color-primary-bright: #e8cf9e;
+            --color-eco: #8f9b77;
+            --color-text: #f5f5f5;
+            --color-text-muted: #9a9a9a;
+            --color-border: rgba(255, 255, 255, 0.08);
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            font-weight: 300;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Bar */
+        .top-bar {
+            position: fixed;
+            top: 20px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            background: rgba(22, 22, 26, 0.8);
+            backdrop-filter: blur(4px);
+            border: 1px solid var(--color-primary);
+            color: var(--color-primary);
+            padding: 10px 24px;
+            font-family: var(--font-sans);
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+        }
+
+        .lang-btn:hover {
+            background: var(--color-primary);
+            color: #0c0c0d;
+            box-shadow: 0 4px 15px rgba(212, 180, 131, 0.3);
+        }
+
+        /* Cinematic Intro */
+        .cinematic-intro {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-image: url('images/LAPORCADAORIGINAL20.JPG');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .intro-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        .intro-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(12,12,13,0.4) 0%, rgba(12,12,13,0.2) 50%, var(--color-bg) 100%);
+            z-index: 2;
+        }
+
+        .intro-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            animation: fadeInUp 2s ease;
+        }
+
+        .intro-logo {
+            max-width: 180px;
+            margin-bottom: 30px;
+            filter: brightness(1.2);
+        }
+
+        .intro-title {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            color: #fff;
+            margin: 0;
+            letter-spacing: 4px;
+            font-weight: 500;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .intro-subtitle {
+            color: var(--color-primary);
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+
+        /* Content Sections */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 30px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        header h1 {
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            color: var(--color-text);
+            font-weight: 500;
+            margin: 0;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+
+        header h2 {
+            font-family: var(--font-sans);
+            font-weight: 300;
+            color: var(--color-primary);
+            margin: 15px 0 0;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .highlight-box {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            padding: 40px;
+            border-radius: 4px;
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--color-primary);
+        }
+
+        .highlight-text {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: var(--color-primary-bright);
+            font-style: italic;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .comparison-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            padding: 40px;
+            border-radius: 4px;
+            transition: all 0.4s ease;
+        }
+
+        .comparison-card:hover {
+            border-color: var(--color-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .card-icon {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .card-title {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            color: #fff;
+            margin: 0 0 15px 0;
+            font-weight: 500;
+        }
+
+        .card-text {
+            color: var(--color-text-muted);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* The "T" Finale Layout */
+        .finale-section {
+            margin-top: 80px;
+            margin-bottom: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .t-top {
+            width: 70%;
+            max-width: 700px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 1px solid var(--color-border);
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .t-top video {
+            width: 100%;
+            display: block;
+        }
+
+        .t-bottom {
+            width: 45%;
+            max-width: 450px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            border: 1px solid var(--color-primary);
+            overflow: hidden;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .t-bottom img {
+            width: 100%;
+            display: block;
+        }
+        
+        .t-bottom-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            background: linear-gradient(to top, var(--color-bg), transparent);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .t-bottom-overlay span {
+            font-family: var(--font-serif);
+            color: var(--color-primary);
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: auto;
+            padding: 40px 20px;
+            border-top: 1px solid var(--color-border);
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        footer strong {
+            color: var(--color-primary);
+            font-weight: 500;
+        }
+
+        .footer-logo {
+            max-height: 50px;
+            opacity: 0.8;
+            filter: brightness(1.2);
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .intro-title { font-size: 2.2rem; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .top-bar { top: 10px; right: 10px; }
+            .t-top, .t-bottom { width: 90%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">🌐 English</button>
+    </div>
+
+    <!-- CINEMATIC INTRO -->
+    <div class="cinematic-intro">
+        <video class="intro-video" autoplay muted loop id="introVideo">
+            <source src="videos/PLAYAPORCADA.MP4" type="video/mp4">
+        </video>
+        <div class="intro-overlay"></div>
+        <div class="intro-content">
+            <img src="images/ECORESORT.PNG" alt="EcoResort La Porcada" class="intro-logo" onerror="this.style.display='none';">
+            <h1 class="intro-title" data-es="ECORESORT LA PORCADA" data-en="ECORESORT LA PORCADA">ECORESORT LA PORCADA</h1>
+            <p class="intro-subtitle" data-es="El Mar a Lago del Siglo XXI" data-en="The 21st Century Mar-a-Lago">El Mar a Lago del Siglo XXI</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container">
+        <header>
+            <h1 data-es="EL MAR A LAGO DEL SIGLO XXI" data-en="THE 21ST CENTURY MAR-A-LAGO">EL MAR A LAGO DEL SIGLO XXI</h1>
+        </header>
+
+        <div class="highlight-box">
+            <p class="highlight-text" data-es="A solo 2.5 horas en avión privado desde Florida. 30.000 membresías exclusivas con visión global." data-en="Just 2.5 hours by private jet from Florida. 30,000 exclusive memberships with a global vision.">A solo 2.5 horas en avión privado desde Florida. 30.000 membresías exclusivas con visión global.</p>
+        </div>
+
+        <div class="comparison-grid">
+            <div class="comparison-card">
+                <div class="card-icon">01</div>
+                <h3 class="card-title" data-es="El Modelo Clásico" data-en="The Classic Model">El Modelo Clásico</h3>
+                <p class="card-text" data-es="Mar-a-Lago representa el lujo del siglo pasado: ostentación histórica, altos costos de mantenimiento y limitaciones estructurales frente al clima de Florida." data-en="Mar-a-Lago represents last century's luxury: historical ostentation, high maintenance costs, and structural limitations against Florida's weather.">Mar-a-Lago representa el lujo del siglo pasado: ostentación histórica, altos costos de mantenimiento y limitaciones estructurales frente al clima de Florida.</p>
+            </div>
+
+            <div class="comparison-card">
+                <div class="card-icon">02</div>
+                <h3 class="card-title" data-es="El Futuro" data-en="The Future">El Futuro</h3>
+                <p class="card-text" data-es="EcoResort La Porcada combina ingeniería sísmica de vanguardia, sostenibilidad real (ESG) y un ecosistema único. Lujo sin culpa, asegurando el capital del inversor." data-en="EcoResort La Porcada combines cutting-edge seismic engineering, real sustainability (ESG), and a unique ecosystem. Guilt-free luxury, securing investor capital.">EcoResort La Porcada combina ingeniería sísmica de vanguardia, sostenibilidad real (ESG) y un ecosistema único. Lujo sin culpa, asegurando el capital del inversor.</p>
+            </div>
+
+            <div class="comparison-card">
+                <div class="card-icon">03</div>
+                <h3 class="card-title" data-es="Rentabilidad MICE" data-en="MICE Profitability">Rentabilidad MICE</h3>
+                <p class="card-text" data-es="Mientras el modelo tradicional es solo social, La Porcada integra el segmento MICE corporativo, garantizando ocupación y tarifas premium durante todo el año." data-en="While the traditional model is purely social, La Porcada integrates the corporate MICE segment, ensuring year-round occupancy and premium rates.">Mientras el modelo tradicional es solo social, La Porcada integra el segmento MICE corporativo, garantizando ocupación y tarifas premium durante todo el año.</p>
+            </div>
+
+            <div class="comparison-card">
+                <div class="card-icon">04</div>
+                <h3 class="card-title" data-es="El Activo Inmobiliario" data-en="The Real Estate Asset">El Activo Inmobiliario</h3>
+                <p class="card-text" data-es="Con proyectos como Villa Cero, no solo ofrecemos un refugio exclusivo, sino un activo financiero inteligente que genera ingresos de alquiler de lujo de forma autónoma." data-en="With projects like Villa Zero, we offer not just an exclusive retreat, but a smart financial asset that generates luxury rental income autonomously.">Con proyectos como Villa Cero, no solo ofrecemos un refugio exclusivo, sino un activo financiero inteligente que genera ingresos de alquiler de lujo de forma autónoma.</p>
+            </div>
+        </div>
+
+        <!-- THE "T" FINALE -->
+        <div class="finale-section">
+            <div class="t-top">
+                <!-- TAKYMA.MP4 forms the horizontal top bar of the "T" -->
+                <video autoplay muted loop>
+                    <source src="videos/TAKYMA.MP4" type="video/mp4">
+                </video>
+            </div>
+            <div class="t-bottom">
+                <!-- PORCADAORIGINAL19.JPG forms the vertical stem of the "T" -->
+                <img src="images/PORCADAORIGINAL19.JPG" alt="Atardecer Azul La Porcada">
+                <div class="t-bottom-overlay">
+                    <span data-es="El Futuro es Hoy" data-en="The Future is Today">El Futuro es Hoy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <img src="images/LOGO.PNG" alt="Takyma Promoter Logo" class="footer-logo" onerror="this.style.display='none';">
+        <p>© 2026 <strong>ECORESORT LA PORCADA</strong> by <strong>TAKYMA INVESTMENT PIONEER</strong></p>
+    </footer>
+
+    <script>
+        // LÓGICA DE CAMBIO DE IDIOMA
+        let currentLang = 'ES';
+        function toggleLanguage() {
+            currentLang = currentLang === 'ES' ? 'EN' : 'ES';
+            
+            const btn = document.getElementById('langBtn');
+            btn.innerText = currentLang === 'ES' ? '🌐 English' : '🌐 Español';
+
+            const elements = document.querySelectorAll('[data-es][data-en]');
+            elements.forEach(el => {
+                el.innerText = currentLang === 'ES' ? el.getAttribute('data-es') : el.getAttribute('data-en');
+            });
+        }
+
+        // LÓGICA PARA BUCLE DE 9 SEGUNDOS EN VIDEO INTRO PLAYAPORCADA.MP4
+        const introVideo = document.getElementById('introVideo');
+        introVideo.addEventListener('loadedmetadata', () => {
+            introVideo.play();
+        });
+        introVideo.addEventListener('timeupdate', () => {
+            // Reiniciar a los 0 segundos si llega a los 9 segundos (bucle estilo película)
+            if (introVideo.currentTime >= 9) {
+                introVideo.currentTime = 0;
+            }
+        });
+    </script>
+</body>
+</html>
